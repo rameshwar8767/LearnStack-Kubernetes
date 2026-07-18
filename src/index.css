@@ -1,0 +1,48 @@
+:root {
+  --ink: #1b2430;
+  --ink-soft: #2f3b4d;
+  --paper: #f3ecd9;
+  --paper-dim: #e9e0c7;
+  --card: #faf6ea;
+  --amber: #c8963c;
+  --amber-deep: #a9791f;
+  --forest: #33513a;
+  --rose: #a24b4f;
+  --line: rgba(27, 36, 48, 0.16);
+  --line-soft: rgba(27, 36, 48, 0.08);
+
+  --font-display: "Fraunces", "Iowan Old Style", serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  --font-body: "Inter", -apple-system, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; }
+button { font-family: inherit; }
+
+:focus-visible {
+  outline: 2px solid var(--amber);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

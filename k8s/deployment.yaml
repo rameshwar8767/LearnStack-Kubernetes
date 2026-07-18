@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: learnstack-web
+  namespace: learnstack
+  labels:
+    app: learnstack
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: learnstack
+  template:
+    metadata:
+      labels:
+        app: learnstack
+    spec:
+      containers:
+        - name: learnstack
+          image: learnstack:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80
+          resources:
+            requests:
+              cpu: "50m"
+              memory: "64Mi"
+            limits:
+              cpu: "200m"
+              memory: "128Mi"
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: 80
+            initialDelaySeconds: 2
+            periodSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 80
+            initialDelaySeconds: 5
+            periodSeconds: 10
